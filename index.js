@@ -10,6 +10,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
             this.class = '';
             this.val = '';
         }
+
+        clearItemClass() {
+            this.class = '';
+        }
+
+        setItemClass() {
+            this.class = 'offers__dots--active';
+        }
     }
 
     class DotsList {
@@ -32,27 +40,44 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
 
         renderDotsList() {
-            console.log(listDots);
-            
+                       
             listDots.innerHTML = "";
+            console.log(listDots);
             let stringItems = '';
             this.itemsList.map(item => {
+                console.log(item.class);
+                
                 stringItems += `<li class="offers__dot ${item.class}" value="${item.val}"></li>`
             })
             listDots.innerHTML = stringItems;
         }
 
+        lowerIndex() {
+            this.index = this.index === 0 ? itemEls.length - 1 : this.index -= 1;
+        }
+
+        higherIndex() {
+            this.index = this.index === itemEls.length - 1 ? 0 : this.index += 1;
+        }
+    
+
         clickNext() {
             nextBtn.addEventListener('click', () => {
-                this.index = this.index === 0 ? itemEls.length - 1 : this.index -= 1;
+                this.itemsList[this.index].clearItemClass();
+                this.lowerIndex();
                 listEl.style.transform = "translateX(" + (-this.index * 100) + "px)";
+                this.itemsList[this.index].setItemClass();
+                this.renderDotsList();
             })
         }
 
         clickPrev() {
             prevBtn.addEventListener('click', () => {
-                this.index = this.index === itemEls.length - 1 ? 0 : this.index += 1;
+                this.itemsList[this.index].clearItemClass();
+                this.higherIndex();
                 listEl.style.transform = "translateX(" + (-this.index * 100) + "px)";
+                this.itemsList[this.index].setItemClass();
+                this.renderDotsList();
             })
         }
     }
