@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             this.itemsList = [];
             this.loadDotsList(itemEls.length);
             this.renderDotsList();
+            this.clickPrev();
+            this.clickNext();
         }
 
         loadDotsList(dotsLength) {
@@ -38,6 +40,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 stringItems += `<li class="offers__dot ${item.class}" value="${item.val}"></li>`
             })
             listDots.innerHTML = stringItems;
+        }
+
+        clickNext() {
+            nextBtn.addEventListener('click', () => {
+                this.index = this.index === 0 ? itemEls.length - 1 : this.index -= 1;
+                listEl.style.transform = "translateX(" + (-this.index * 100) + "px)";
+            })
+        }
+
+        clickPrev() {
+            prevBtn.addEventListener('click', () => {
+                this.index = this.index === itemEls.length - 1 ? 0 : this.index += 1;
+                listEl.style.transform = "translateX(" + (-this.index * 100) + "px)";
+            })
         }
     }
 
