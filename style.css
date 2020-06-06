@@ -46,6 +46,6 @@
     border-radius: 50%;
 }
 
-.offers__dots--active {
+.offers__dot--active {
     background-color: yellowgreen;
 }
