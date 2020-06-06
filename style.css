@@ -5,25 +5,25 @@
     outline: none;
 }
 .offers__container {
-    width: 100px;
+    /* don't set width */
     overflow: hidden;
     margin: 0 auto;
 }
 
 .offers__list {
+    /* don't set width */
     list-style-type: none;
     text-align: center;
     background-color: rgb(200, 255, 255);
-    width: 300px;
     display: flex;
     transition: .5s;
-    /* transform: translateX(-100px); */
 }
 
 .offers__item {
-    display: inline-block;
-    width: 100px;
+    /* set width */
+    width: 200px;
     height: 100px;
+    display: inline-block;
 }
 
 .offers__item:nth-of-type(1) {
@@ -35,6 +35,18 @@
 }
 
 .offers__item:nth-of-type(3) {
+    background-color: rgb(251, 180, 65);
+}
+
+.offers__item:nth-of-type(4) {
+    background-color: teal;
+}
+
+.offers__item:nth-of-type(5) {
+    background-color: rgb(65, 161, 251);
+}
+
+.offers__item:nth-of-type(6) {
     background-color: rgb(251, 180, 65);
 }
 
