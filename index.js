@@ -1,13 +1,21 @@
 
 const prevBtn = document.querySelector('#prev-btn');
 const nextBtn = document.querySelector('#next-btn');
+const offers = document.querySelector('.offers');
 const offersList = document.querySelector('.offers__list');
 const offersItems = document.querySelectorAll('.offers__item');
 const dotList = document.querySelector('.offers__dots');
 const offersContainer = document.querySelector('.offers__container');
-const offersItemWidth = offersItems[0].offsetWidth;
 const offersItemsLength = offersItems.length;
 
+//set offers__item element width
+const offersItemWidth = 530;
+
+offersItems.forEach(item => {
+    item.style.width = offersItemWidth + 'px';
+})
+
+offers.style.width = offersItemWidth + 200 + 'px';
 offersContainer.style.width = offersItemWidth + 'px';
 offersList.style.width = offersItemsLength * offersItemWidth + 'px';
 
@@ -42,6 +50,9 @@ class DotsList {
         while (i < dotsLength) {
             let newEl = new DotItem(i);
 
+            if (i === 0) {
+                newEl.setItemClass();
+            }
             this.itemsList.push(newEl);
             i++;
         }
@@ -92,7 +103,7 @@ class DotsList {
  
     clickDot(ev) {
         const listElements = ev.target.closest('.offers__dots').querySelectorAll('.offers__dot');
-        
+
         listElements.forEach(el => {
             el.classList.remove('offers__dot--active');
         })
