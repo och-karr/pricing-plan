@@ -94,6 +94,9 @@ class DotsList {
             this.moveSlide();
             this.itemsList[this.index].setItemClass();
             this.renderDotsList();
+            this.itemsList.map(item => {
+                item.clearItemClass();
+            });
         })
     }
 
